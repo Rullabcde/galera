@@ -1,0 +1,3 @@
+CREATE USER IF NOT EXISTS 'rullabcd'@'%' IDENTIFIED BY 'rullabcd';
+GRANT ALL PRIVILEGES ON *.* TO 'rullabcd'@'%';
+FLUSH PRIVILEGES;

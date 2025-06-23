@@ -9,11 +9,9 @@ services:
       - galera-net
     environment:
       - MARIADB_ROOT_PASSWORD=siswa
-      - MYSQL_DATABASE=app_db
-      - MYSQL_USER=rullabcd
-      - MYSQL_PASSWORD=siswa123
     volumes:
       - ./galera/node1.cnf:/etc/mysql/conf.d/galera.cnf
+      - ./galera/init.sql:/docker-entrypoint-initdb.d/init.sql
       - db1-data:/var/lib/mysql
     command: --wsrep-new-cluster
     healthcheck:
@@ -27,8 +25,6 @@ services:
     hostname: db2
     networks:
       - galera-net
-    environment:
-      - MARIADB_ROOT_PASSWORD=siswa
     volumes:
       - ./galera/node2.cnf:/etc/mysql/conf.d/galera.cnf
       - db2-data:/var/lib/mysql
@@ -46,8 +42,6 @@ services:
     hostname: db3
     networks:
       - galera-net
-    environment:
-      - MARIADB_ROOT_PASSWORD=siswa
     volumes:
       - ./galera/node3.cnf:/etc/mysql/conf.d/galera.cnf
       - db3-data:/var/lib/mysql
@@ -70,8 +64,10 @@ services:
       - "6033:6033" # SQL Port
     volumes:
       - ./proxysql/proxysql.cnf:/etc/proxysql.cnf
-      - ./proxysql/init.sh:/docker-entrypoint-initdb.d/init.sh
       - proxysql-data:/var/lib/proxysql
+      - ./proxysql/init.sql:/init.sql
+      - ./proxysql/entrypoint.sh:/entrypoint.sh
+    entrypoint: ["sh", "/entrypoint.sh"]
     depends_on:
       db3:
         condition: service_healthy
