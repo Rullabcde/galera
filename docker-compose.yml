@@ -25,6 +25,8 @@ services:
     hostname: db2
     networks:
       - galera-net
+    environment:
+      - MARIADB_ROOT_PASSWORD=siswa
     volumes:
       - ./galera/node2.cnf:/etc/mysql/conf.d/galera.cnf
       - db2-data:/var/lib/mysql
@@ -42,6 +44,8 @@ services:
     hostname: db3
     networks:
       - galera-net
+    environment:
+      - MARIADB_ROOT_PASSWORD=siswa
     volumes:
       - ./galera/node3.cnf:/etc/mysql/conf.d/galera.cnf
       - db3-data:/var/lib/mysql
