@@ -22,16 +22,11 @@ SELECT * FROM users;
 EOF
 
 echo -e "\n${GREEN}Mengambil info query digest dari ProxySQL Admin...${NC}"
-mysql -u$PROXYSQL_ADMIN_USER -p$PROXYSQL_ADMIN_PASS -h$HOST -P$ADMIN_PORT -e "
+docker exec -i proxysql mysql -u$PROXYSQL_ADMIN_USER -p$PROXYSQL_ADMIN_PASS -h$HOST -P$ADMIN_PORT -e "
 SELECT hostgroup, username, digest_text, count_star, first_seen, last_seen
 FROM stats_mysql_query_digest
 ORDER BY last_seen DESC
 LIMIT 10;
-"
-
-echo -e "\n${YELLOW}Info monitoring node${NC}"
-mysql -u$PROXYSQL_ADMIN_USER -p$PROXYSQL_ADMIN_PASS -h$HOST -P$ADMIN_PORT -e "
-SELECT hostname, status, hostgroup_id, uptime, queries;
 "
 
 echo -e "\n${YELLOW}Note:${NC} Coba matikan salah satu DB node (db2 atau db3), lalu jalankan ulang script ini untuk lihat efek failover."
