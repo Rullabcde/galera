@@ -13,7 +13,7 @@ INSERT INTO mysql_users (username, password, default_hostgroup) VALUES
 
 -- User monitoring
 INSERT INTO mysql_users (username, password, default_hostgroup, transaction_persistent) VALUES
-('monitor', 'monitorpass', 10, 1);
+('monitor', 'monitor', 10, 1);
 
 -- Query rules
 INSERT INTO mysql_query_rules (rule_id, active, match_pattern, destination_hostgroup, apply) VALUES
