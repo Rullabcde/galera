@@ -6,7 +6,7 @@ INSERT INTO mysql_servers (hostgroup_id, hostname, port) VALUES
 
 DELETE FROM mysql_users;
 INSERT INTO mysql_users (username, password, default_hostgroup) VALUES
-('rullabcd', 'rullabcd', 10);
+('rullabcd', 'siswa123', 10);
 
 LOAD MYSQL SERVERS TO RUNTIME;
 LOAD MYSQL USERS TO RUNTIME;
