@@ -9,7 +9,7 @@ wsrep_on=ON
 wsrep_provider=/usr/lib/galera/libgalera_smm.so
 
 # Galera Cluster Configuration
-wsrep_cluster_name="docker_test_cluster"
+wsrep_cluster_name="test_cluster"
 wsrep_cluster_address="gcomm://db1,db2,db3"
 
 # Galera Synchronization Configuration

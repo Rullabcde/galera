@@ -70,7 +70,7 @@ services:
       - "6033:6033" # SQL Port
     volumes:
       - ./proxysql/proxysql.cnf:/etc/proxysql.cnf
-      - ./proxysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./proxysql/init.sh:/docker-entrypoint-initdb.d/init.sh
       - proxysql-data:/var/lib/proxysql
     depends_on:
       db3:

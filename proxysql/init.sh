@@ -1,3 +1,6 @@
+#!/bin/bash
+
+mysql -u admin -padmin -h127.0.0.1 -P6032 <<EOF
 DELETE FROM mysql_servers;
 INSERT INTO mysql_servers (hostgroup_id, hostname, port) VALUES
 (10, 'db1', 3306),
@@ -13,3 +16,6 @@ LOAD MYSQL USERS TO RUNTIME;
 
 SAVE MYSQL SERVERS TO DISK;
 SAVE MYSQL USERS TO DISK;
+EOF
+
+echo "ProxySQL configuration applied successfully."
