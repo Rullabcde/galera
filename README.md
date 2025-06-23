@@ -4,11 +4,11 @@ This project demonstrates a **high-availability MariaDB Galera Cluster** managed
 
 ---
 
-## Architecture
+## Topology
 
-<img src="topology.png" alt="Topology" width="280"/>
+<img src="Topology.png" alt="Topology" width="400"/>
 
-- **MariaDB Galera Cluster**: 3 nodes for synchronous multi-master replication.
+- **Galera Cluster**: 3 nodes for synchronous multi-master replication.
 - **ProxySQL**: Load balancer and query router for high availability and performance.
 
 ---
@@ -34,7 +34,7 @@ This command will start all MariaDB Galera nodes and the ProxySQL instance.
 ### 3. Test the Cluster
 
 ```bash
-./test-cluster
+./script/test-cluster
 ```
 
 This script inserts data via ProxySQL and verifies replication across all Galera nodes.
